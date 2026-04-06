@@ -235,6 +235,76 @@ Open:
 http://localhost:5000
 ```
 
+## Deploy on Render
+
+Render is the recommended choice for this project because it runs Express apps as full web services and works well with MongoDB-backed server apps.
+
+Official docs used:
+
+- [Render Web Services](https://render.com/docs/web-services)
+- [Render Blueprint YAML Reference](https://render.com/docs/blueprint-spec)
+- [Render Environment Variables](https://render.com/docs/configure-environment-variables)
+
+This repo includes a ready-to-use [render.yaml](./render.yaml).
+
+### Before deploying
+
+Your cloud deployment cannot use local MongoDB like:
+
+```env
+mongodb://127.0.0.1:27017/vtopx
+```
+
+Use one of these instead:
+
+- MongoDB Atlas connection string
+- a MongoDB instance hosted separately on Render
+
+### Render deployment steps
+
+1. Push this repo to GitHub.
+2. Sign in to Render.
+3. Create a new Blueprint or Web Service from this repo:
+   [https://github.com/LielStephen/vtopx](https://github.com/LielStephen/vtopx)
+4. If using the included `render.yaml`, Render will auto-fill:
+   - runtime
+   - build command
+   - start command
+   - health check path
+5. Add the `MONGODB_URI` environment variable in Render with your cloud MongoDB connection string.
+6. Deploy the service.
+
+### Render config in this repo
+
+The included `render.yaml` sets:
+
+- `buildCommand: npm install`
+- `startCommand: npm start`
+- `healthCheckPath: /api/health`
+- generated `JWT_SECRET`
+- admin defaults
+
+### After deploy
+
+Open your Render URL:
+
+```text
+https://your-service-name.onrender.com
+```
+
+Then log in with the admin account:
+
+```text
+Email: admin@vtopx.edu
+Password: Admin@123
+```
+
+If you change the admin environment variables in Render, use those instead.
+
+## Vercel note
+
+Vercel can deploy Node.js code, but this project is a full Express + MongoDB app with multiple protected server routes, so Render is the simpler and more reliable option for this codebase.
+
 ## Development Commands
 
 Run app:

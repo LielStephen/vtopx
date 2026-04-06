@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: vtopx
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false
+      - key: DEFAULT_ADMIN_EMAIL
+        value: admin@vtopx.edu
+      - key: DEFAULT_ADMIN_PASSWORD
+        value: Admin@123
+      - key: DEFAULT_ADMIN_REGNO
+        value: VTOPXADMIN01
