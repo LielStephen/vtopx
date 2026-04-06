@@ -1,0 +1,33 @@
+{
+  "name": "exam-evaluator-student-portal",
+  "version": "1.0.0",
+  "description": "Node.js student portal with MongoDB authentication for the NLP exam evaluator project.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "check": "node --check server.js && node --check controllers/authController.js && node --check controllers/portalController.js && node --check controllers/adminController.js && node --check controllers/publicController.js && node --check middleware/authMiddleware.js && node --check models/Student.js && node --check models/ServiceRequest.js && node --check routes/authRoutes.js && node --check routes/portalRoutes.js && node --check routes/adminRoutes.js && node --check routes/publicRoutes.js && node --check config/db.js && node --check config/portalSeed.js && node --check config/bootstrapAdmin.js && node --check public/auth.js && node --check public/portal-common.js && node --check public/dashboard.js && node --check public/academics.js && node --check public/requests.js && node --check public/admin-users.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "student-portal",
+    "authentication"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

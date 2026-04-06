@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vtopx Academics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="portal-body">
+    <header class="topbar">
+      <div class="brand-row">
+        <span class="seal">VX</span>
+        <div>
+          <strong>vtopx</strong>
+          <p>Academic module</p>
+        </div>
+      </div>
+
+      <div class="topbar-account">
+        <div class="account-block">
+          <span class="account-avatar" id="accountInitials">ST</span>
+          <div>
+            <strong id="topbarRegNo">Loading</strong>
+            <p id="topbarName">Loading user</p>
+          </div>
+        </div>
+        <button id="logoutButton" class="ghost-button" type="button">Logout</button>
+      </div>
+    </header>
+
+    <div class="portal-shell">
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <p class="section-kicker">Logged in</p>
+          <strong id="sidebarName">Student</strong>
+          <p id="sidebarMeta" class="muted-copy">Role</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="/dashboard" data-nav="dashboard">Dashboard</a>
+          <a href="/academics" data-nav="academics">Academics</a>
+          <a href="/requests" data-nav="requests">Requests</a>
+          <a href="/admin/users" data-nav="admin" data-admin-only>Admin Users</a>
+        </nav>
+      </aside>
+
+      <main class="page-main">
+        <section class="hero-panel">
+          <div>
+            <p class="section-kicker">Academics</p>
+            <h1 id="academicTitle">Academic details</h1>
+            <p id="academicMeta" class="muted-copy">Courses, timetable, marks, and assignments.</p>
+          </div>
+        </section>
+
+        <section class="content-grid two-columns">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Courses</p>
+                <h2>Registered courses</h2>
+              </div>
+            </div>
+            <div id="courseList" class="card-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Today timetable</p>
+                <h2 id="todayTitle">Classes today</h2>
+              </div>
+            </div>
+            <div id="todayScheduleList" class="card-list"></div>
+          </article>
+        </section>
+
+        <section class="content-grid two-columns">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Marks</p>
+                <h2>Assessment tracker</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Assessment</th>
+                    <th>Weightage</th>
+                    <th>Marks</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="marksTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Assignments</p>
+                <h2>Submission actions</h2>
+              </div>
+            </div>
+            <p id="academicMessage" class="form-message" aria-live="polite"></p>
+            <div id="assignmentList" class="card-list"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="/portal-common.js"></script>
+    <script src="/academics.js"></script>
+  </body>
+</html>

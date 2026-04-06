@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="pageTitle">vtopx Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="auth-page">
+    <main class="auth-layout">
+      <section class="auth-showcase">
+        <div class="brand-row">
+          <span class="seal">VX</span>
+          <div>
+            <p id="portalLabel" class="eyebrow-text">vtopx Student Portal</p>
+            <h1 id="portalName">vtopx</h1>
+          </div>
+        </div>
+
+        <div class="auth-copy">
+          <p class="eyebrow-text">Student portal</p>
+          <h2 id="portalHeadline">Login with credentials stored in the vtopx database.</h2>
+          <p id="portalSubheadline">
+            This version uses MongoDB for login credentials, student records, requests, and
+            admin-only user CRUD operations.
+          </p>
+        </div>
+
+        <div class="showcase-grid">
+          <article class="showcase-card">
+            <span class="badge-chip">Users</span>
+            <h3 id="totalUsersCard">0 total users in MongoDB</h3>
+          </article>
+          <article class="showcase-card">
+            <span class="badge-chip">Admins</span>
+            <h3 id="adminUsersCard">0 admins with CRUD access</h3>
+          </article>
+          <article class="showcase-card">
+            <span class="badge-chip">Requests</span>
+            <h3 id="requestCountCard">0 requests stored in MongoDB</h3>
+          </article>
+          <article class="showcase-card">
+            <span class="badge-chip">Latest users</span>
+            <div id="latestUsersList" class="mini-list">
+              <p>No users yet.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="auth-panel">
+        <div class="auth-card">
+          <p class="section-kicker">Sign In</p>
+          <h2>Enter vtopx</h2>
+          <p class="muted-copy">Use your registration number or email with your password.</p>
+
+          <p id="authMessage" class="form-message" aria-live="polite"></p>
+
+          <form id="loginForm" class="stack-form" novalidate>
+            <label>
+              Registration Number or Email
+              <input type="text" name="identifier" placeholder="23BCE20073 or admin@vtopx.edu" required />
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" placeholder="Enter your password" required />
+            </label>
+            <button type="submit" class="primary-button">Login</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="/auth.js"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vtopx Admin Users</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="portal-body">
+    <header class="topbar">
+      <div class="brand-row">
+        <span class="seal">VX</span>
+        <div>
+          <strong>vtopx</strong>
+          <p>Admin user management</p>
+        </div>
+      </div>
+
+      <div class="topbar-account">
+        <div class="account-block">
+          <span class="account-avatar" id="accountInitials">AD</span>
+          <div>
+            <strong id="topbarRegNo">Loading</strong>
+            <p id="topbarName">Loading user</p>
+          </div>
+        </div>
+        <button id="logoutButton" class="ghost-button" type="button">Logout</button>
+      </div>
+    </header>
+
+    <div class="portal-shell">
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <p class="section-kicker">Admin</p>
+          <strong id="sidebarName">Administrator</strong>
+          <p id="sidebarMeta" class="muted-copy">Role</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="/dashboard" data-nav="dashboard">Dashboard</a>
+          <a href="/academics" data-nav="academics">Academics</a>
+          <a href="/requests" data-nav="requests">Requests</a>
+          <a href="/admin/users" data-nav="admin" data-admin-only>Admin Users</a>
+        </nav>
+      </aside>
+
+      <main class="page-main">
+        <section class="hero-panel">
+          <div>
+            <p class="section-kicker">Admin only</p>
+            <h1>User management</h1>
+            <p class="muted-copy">Create, update, and delete login users. All changes are stored in MongoDB.</p>
+          </div>
+        </section>
+
+        <section id="userStats" class="stats-grid"></section>
+
+        <section class="content-grid admin-grid">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">User form</p>
+                <h2 id="formTitle">Add user</h2>
+              </div>
+            </div>
+            <p id="adminMessage" class="form-message" aria-live="polite"></p>
+            <form id="userForm" class="stack-form" novalidate>
+              <input type="hidden" id="userIdField" name="userId" />
+              <label>
+                Full Name
+                <input type="text" name="fullName" required />
+              </label>
+              <div class="two-up">
+                <label>
+                  Registration Number
+                  <input type="text" name="regNo" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" name="email" required />
+                </label>
+              </div>
+              <div class="two-up">
+                <label>
+                  Department
+                  <input type="text" name="department" required />
+                </label>
+                <label>
+                  Academic Year
+                  <select name="academicYear" required>
+                    <option value="">Select</option>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                    <option value="Admin">Admin</option>
+                  </select>
+                </label>
+              </div>
+              <div class="two-up">
+                <label>
+                  Role
+                  <select name="role" required>
+                    <option value="student">Student</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                </label>
+                <label>
+                  Password
+                  <input type="password" name="password" placeholder="Required for new users" />
+                </label>
+              </div>
+              <div class="button-row">
+                <button type="submit" class="primary-button">Save User</button>
+                <button type="button" id="cancelEditButton" class="secondary-button">Cancel Edit</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Users</p>
+                <h2>MongoDB-backed login accounts</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Reg No</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="/portal-common.js"></script>
+    <script src="/admin-users.js"></script>
+  </body>
+</html>

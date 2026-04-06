@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vtopx Requests</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="portal-body">
+    <header class="topbar">
+      <div class="brand-row">
+        <span class="seal">VX</span>
+        <div>
+          <strong>vtopx</strong>
+          <p>Request module</p>
+        </div>
+      </div>
+
+      <div class="topbar-account">
+        <div class="account-block">
+          <span class="account-avatar" id="accountInitials">ST</span>
+          <div>
+            <strong id="topbarRegNo">Loading</strong>
+            <p id="topbarName">Loading user</p>
+          </div>
+        </div>
+        <button id="logoutButton" class="ghost-button" type="button">Logout</button>
+      </div>
+    </header>
+
+    <div class="portal-shell">
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <p class="section-kicker">Logged in</p>
+          <strong id="sidebarName">Student</strong>
+          <p id="sidebarMeta" class="muted-copy">Role</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="/dashboard" data-nav="dashboard">Dashboard</a>
+          <a href="/academics" data-nav="academics">Academics</a>
+          <a href="/requests" data-nav="requests">Requests</a>
+          <a href="/admin/users" data-nav="admin" data-admin-only>Admin Users</a>
+        </nav>
+      </aside>
+
+      <main class="page-main">
+        <section class="hero-panel">
+          <div>
+            <p class="section-kicker">Requests</p>
+            <h1 id="requestTitle">Request center</h1>
+            <p id="requestMeta" class="muted-copy">Submit leave and academic support requests stored in MongoDB.</p>
+          </div>
+        </section>
+
+        <section class="content-grid two-columns">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">New request</p>
+                <h2>Create request</h2>
+              </div>
+            </div>
+            <p id="requestMessage" class="form-message" aria-live="polite"></p>
+            <form id="requestForm" class="stack-form" novalidate>
+              <label>
+                Request Type
+                <select id="requestTypeField" name="requestType" required></select>
+              </label>
+              <div id="leaveFields" class="two-up hidden-grid">
+                <label>
+                  From Date
+                  <input type="date" name="fromDate" />
+                </label>
+                <label>
+                  To Date
+                  <input type="date" name="toDate" />
+                </label>
+              </div>
+              <label>
+                Course Code
+                <input type="text" name="courseCode" placeholder="Optional" />
+              </label>
+              <label>
+                Title
+                <input type="text" name="title" placeholder="Short title" required />
+              </label>
+              <label>
+                Description
+                <textarea name="description" rows="5" placeholder="Describe your request" required></textarea>
+              </label>
+              <button type="submit" class="primary-button">Submit Request</button>
+            </form>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Status</p>
+                <h2>Request summary</h2>
+              </div>
+            </div>
+            <div id="requestStats" class="pill-row"></div>
+            <div id="requestHistory" class="card-list"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="/portal-common.js"></script>
+    <script src="/requests.js"></script>
+  </body>
+</html>

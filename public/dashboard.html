@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vtopx Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="portal-body">
+    <header class="topbar">
+      <div class="brand-row">
+        <span class="seal">VX</span>
+        <div>
+          <strong>vtopx</strong>
+          <p>Student Portal</p>
+        </div>
+      </div>
+
+      <div class="topbar-account">
+        <div class="account-block">
+          <span class="account-avatar" id="accountInitials">ST</span>
+          <div>
+            <strong id="topbarRegNo">Loading</strong>
+            <p id="topbarName">Loading user</p>
+          </div>
+        </div>
+        <button id="logoutButton" class="ghost-button" type="button">Logout</button>
+      </div>
+    </header>
+
+    <div class="portal-shell">
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <p class="section-kicker">Logged in</p>
+          <strong id="sidebarName">Student</strong>
+          <p id="sidebarMeta" class="muted-copy">Role</p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="/dashboard" data-nav="dashboard">Dashboard</a>
+          <a href="/academics" data-nav="academics">Academics</a>
+          <a href="/requests" data-nav="requests">Requests</a>
+          <a href="/admin/users" data-nav="admin" data-admin-only>Admin Users</a>
+        </nav>
+      </aside>
+
+      <main class="page-main">
+        <section class="hero-panel">
+          <div>
+            <p class="section-kicker">Overview</p>
+            <h1 id="welcomeTitle">Welcome</h1>
+            <p id="welcomeMeta" class="muted-copy">Your portal summary loads from MongoDB.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="primary-button button-link" href="/academics">Open Academics</a>
+            <a class="secondary-button button-link" href="/requests">Open Requests</a>
+          </div>
+        </section>
+
+        <section id="overviewStats" class="stats-grid"></section>
+
+        <section class="content-grid two-columns">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Spotlight</p>
+                <h2>Latest notices</h2>
+              </div>
+            </div>
+            <div id="spotlightList" class="card-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Quick Links</p>
+                <h2>Portal modules</h2>
+              </div>
+            </div>
+            <div id="quickLinksList" class="card-list"></div>
+          </article>
+        </section>
+
+        <section class="content-grid two-columns">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Today</p>
+                <h2 id="scheduleTitle">Today's classes</h2>
+              </div>
+            </div>
+            <div id="todayScheduleList" class="card-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Recent requests</p>
+                <h2>Latest activity</h2>
+              </div>
+            </div>
+            <div id="requestSummary" class="pill-row"></div>
+            <div id="recentRequestsList" class="card-list"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="/portal-common.js"></script>
+    <script src="/dashboard.js"></script>
+  </body>
+</html>
