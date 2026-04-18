@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="pageTitle">vtopx Login</title>
+    <title>vtopx | University Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,71 +12,129 @@
     />
     <link rel="stylesheet" href="/styles.css" />
   </head>
-  <body class="auth-page">
-    <main class="auth-layout">
-      <section class="auth-showcase">
-        <div class="brand-row">
-          <span class="seal">VX</span>
-          <div>
-            <p id="portalLabel" class="eyebrow-text">vtopx Student Portal</p>
-            <h1 id="portalName">vtopx</h1>
-          </div>
-        </div>
-
-        <div class="auth-copy">
-          <p class="eyebrow-text">Student portal</p>
-          <h2 id="portalHeadline">Login with credentials stored in the vtopx database.</h2>
-          <p id="portalSubheadline">
-            This version uses MongoDB for login credentials, student records, requests, and
-            admin-only user CRUD operations.
+  <body class="landing-page">
+    <header class="vtop-header">
+      <div class="vtop-header__bar vtop-container">
+        <a class="vtop-brand" href="/" aria-label="vtopx home">
+          <img src="/assets/vitap-logo.png" alt="VIT-AP University logo" />
+        </a>
+        <div class="vtop-header__copy">
+          <p class="vtop-header__tagline">VTOP translates to "VIT on TOP"</p>
+          <p class="vtop-header__subtitle">
+            A digital initiative by the institute facilitating Faculty, Staff, Students, Parents
+            and Alumni to access and process Academics, Research, Supporting services at one common
+            platform.
           </p>
         </div>
+      </div>
+    </header>
 
-        <div class="showcase-grid">
-          <article class="showcase-card">
-            <span class="badge-chip">Users</span>
-            <h3 id="totalUsersCard">0 total users in MongoDB</h3>
-          </article>
-          <article class="showcase-card">
-            <span class="badge-chip">Admins</span>
-            <h3 id="adminUsersCard">0 admins with CRUD access</h3>
-          </article>
-          <article class="showcase-card">
-            <span class="badge-chip">Requests</span>
-            <h3 id="requestCountCard">0 requests stored in MongoDB</h3>
-          </article>
-          <article class="showcase-card">
-            <span class="badge-chip">Latest users</span>
-            <div id="latestUsersList" class="mini-list">
-              <p>No users yet.</p>
+    <main class="vtop-home-main vtop-container">
+      <section class="roles-section" aria-label="Portal roles">
+        <div class="role-grid">
+          <article class="role-card" data-target="/student_login.html" tabindex="0">
+            <div class="role-icon-shell role-icon-shell--student" aria-hidden="true">
+              <svg class="role-icon" viewBox="0 0 64 64" fill="none">
+                <circle cx="21" cy="23" r="8" fill="#ffcc80" />
+                <circle cx="42" cy="23" r="8" fill="#ffd59c" />
+                <circle cx="32" cy="17" r="9" fill="#ffe0b2" />
+                <path d="M12 49c0-6 4-11 10-11s10 5 10 11" fill="#4a78c9" />
+                <path d="M32 49c0-7 5-13 12-13s12 6 12 13" fill="#1e59b7" />
+                <path d="M19 12 32 7l13 5-13 5-13-5Z" fill="#3f3f46" />
+              </svg>
             </div>
+            <h2>Student</h2>
+            <button class="role-card__action role-card__action--student" type="button" aria-label="Open student login">
+              &rarr;
+            </button>
+          </article>
+
+          <article class="role-card" data-target="/employee_login.html" tabindex="0">
+            <div class="role-icon-shell role-icon-shell--employee" aria-hidden="true">
+              <svg class="role-icon" viewBox="0 0 64 64" fill="none">
+                <circle cx="24" cy="18" r="7" fill="#ffe0b2" />
+                <circle cx="40" cy="18" r="7" fill="#ffd7a3" />
+                <path d="M17 48V33l7-4 8 7 8-7 7 4v15" fill="#f2c94c" />
+                <path d="M20 49V31l4-2 8 7 8-7 4 2v18" fill="#ef6c57" />
+                <path d="M30 31h4v18h-4Z" fill="#ffffff" />
+              </svg>
+            </div>
+            <h2>Employee</h2>
+            <button class="role-card__action role-card__action--employee" type="button" aria-label="Open employee login">
+              &rarr;
+            </button>
+          </article>
+
+          <article class="role-card" data-target="/parent_login.html" tabindex="0">
+            <div class="role-icon-shell role-icon-shell--parent" aria-hidden="true">
+              <svg class="role-icon" viewBox="0 0 64 64" fill="none">
+                <circle cx="23" cy="21" r="8" fill="#ffd59c" />
+                <circle cx="41" cy="21" r="8" fill="#ffc9b0" />
+                <circle cx="32" cy="37" r="10" fill="#9bd6ff" />
+                <path d="M10 38c0-5 4-9 9-9s9 4 9 9v8H10v-8Z" fill="#65b5ff" />
+                <path d="M36 38c0-5 4-9 9-9s9 4 9 9v8H36v-8Z" fill="#ff8f6b" />
+                <path d="M22 49c0-5 5-9 10-9s10 4 10 9" fill="#60c97b" />
+              </svg>
+            </div>
+            <h2>Parent</h2>
+            <button class="role-card__action role-card__action--parent" type="button" aria-label="Open parent login">
+              &rarr;
+            </button>
+          </article>
+
+          <article class="role-card" data-target="/alumni_login.html" tabindex="0">
+            <div class="role-icon-shell role-icon-shell--alumni" aria-hidden="true">
+              <svg class="role-icon" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="21" r="8" fill="#ffd59c" />
+                <path d="M20 46c0-6 5-11 12-11s12 5 12 11" fill="#62b0ff" />
+                <circle cx="13" cy="14" r="5" stroke="#2db4d6" stroke-width="3" />
+                <circle cx="51" cy="14" r="5" stroke="#2db4d6" stroke-width="3" />
+                <circle cx="13" cy="43" r="5" stroke="#2db4d6" stroke-width="3" />
+                <circle cx="51" cy="43" r="5" stroke="#2db4d6" stroke-width="3" />
+                <path d="M18 17l9 2M46 17l-9 2M18 40l9-2M46 40l-9-2" stroke="#2db4d6" stroke-width="3" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h2>Alumni</h2>
+            <button class="role-card__action role-card__action--alumni" type="button" aria-label="Open alumni login">
+              &rarr;
+            </button>
           </article>
         </div>
       </section>
 
-      <section class="auth-panel">
-        <div class="auth-card">
-          <p class="section-kicker">Sign In</p>
-          <h2>Enter vtopx</h2>
-          <p class="muted-copy">Use your registration number or email with your password.</p>
+      <section class="info-grid" aria-label="University information">
+        <article class="info-panel">
+          <div class="info-panel__header">
+            <h3>Vellore Institute of Technology - Andhra Pradesh (VIT-AP University), India</h3>
+          </div>
+          <ul class="info-list">
+            <li>Ranked No. 1 Emerging Private University (Outlook Rankings 2022-2024)</li>
+            <li>Recognized for Outcome Based Education (Diamond Band A+)</li>
+            <li>Host Institute under MSME Innovation Scheme</li>
+            <li>VIT-AP TBI Foundation registered under MCA</li>
+            <li>Faculty listed among Top 2% Scientists (Stanford + Elsevier)</li>
+          </ul>
+        </article>
 
-          <p id="authMessage" class="form-message" aria-live="polite"></p>
-
-          <form id="loginForm" class="stack-form" novalidate>
-            <label>
-              Registration Number or Email
-              <input type="text" name="identifier" placeholder="23BCE20073 or admin@vtopx.edu" required />
-            </label>
-            <label>
-              Password
-              <input type="password" name="password" placeholder="Enter your password" required />
-            </label>
-            <button type="submit" class="primary-button">Login</button>
-          </form>
-        </div>
+        <aside class="info-panel spotlight-panel">
+          <div class="info-panel__header">
+            <h3>Spotlight</h3>
+            <a href="/student_login.html" class="panel-link">More...</a>
+          </div>
+          <ul class="spotlight-list">
+            <li>
+              <span class="spotlight-mark" aria-hidden="true">!</span>
+              <a href="/student_login.html">TRANSCRIPTS FOR VIT-AP ALUMNI STUDENTS - REG</a>
+            </li>
+          </ul>
+        </aside>
       </section>
     </main>
 
-    <script src="/auth.js"></script>
+    <footer class="portal-footer">
+      <p>Copyright &copy; Software Development Cell, VIT-AP University</p>
+    </footer>
+
+    <script src="/landing.js"></script>
   </body>
 </html>

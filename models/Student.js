@@ -226,9 +226,17 @@ const studentSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    specialization: {
+      type: String,
+      trim: true,
+    },
     academicYear: {
       type: String,
       required: true,
+      trim: true,
+    },
+    bio: {
+      type: String,
       trim: true,
     },
     role: {

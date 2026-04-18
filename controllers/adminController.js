@@ -8,7 +8,9 @@ function buildUserPayload(student) {
     regNo: student.regNo,
     email: student.email,
     department: student.department,
+    specialization: student.specialization,
     academicYear: student.academicYear,
+    bio: student.bio,
     school: student.school,
     program: student.program,
     semester: student.semester,
@@ -49,7 +51,7 @@ async function listUsers(req, res) {
 
 async function createUser(req, res) {
   try {
-    const { fullName, regNo, email, password, department, academicYear, role } = req.body;
+    const { fullName, regNo, email, password, department, specialization, academicYear, role, bio } = req.body;
 
     if (!fullName || !regNo || !email || !password || !department || !academicYear) {
       return res.status(400).json({ message: "Fill in all required user fields." });
@@ -73,7 +75,9 @@ async function createUser(req, res) {
       email: normalizedEmail,
       password,
       department,
+      specialization,
       academicYear,
+      bio,
       role: normalizedRole,
       ...buildDefaultPortalData({
         regNo: normalizedRegNo,
@@ -93,7 +97,7 @@ async function createUser(req, res) {
 
 async function updateUser(req, res) {
   try {
-    const { fullName, regNo, email, password, department, academicYear, role } = req.body;
+    const { fullName, regNo, email, password, department, specialization, academicYear, role, bio } = req.body;
     const user = await Student.findById(req.params.userId).select("+password");
 
     if (!user) {
@@ -116,7 +120,9 @@ async function updateUser(req, res) {
     user.regNo = nextRegNo;
     user.email = nextEmail;
     user.department = department || user.department;
+    user.specialization = specialization || user.specialization;
     user.academicYear = academicYear || user.academicYear;
+    user.bio = bio || user.bio;
     user.role = role === "admin" ? "admin" : "student";
 
     if (password) {

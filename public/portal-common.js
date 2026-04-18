@@ -56,6 +56,7 @@ function applyShell(student, activePage) {
   const topbarName = document.getElementById("topbarName");
   const topbarRegNo = document.getElementById("topbarRegNo");
   const accountInitials = document.getElementById("accountInitials");
+  const accountPhoto = document.getElementById("accountPhoto");
 
   if (sidebarName) {
     sidebarName.textContent = student.fullName;
@@ -75,6 +76,10 @@ function applyShell(student, activePage) {
 
   if (accountInitials) {
     accountInitials.textContent = userInitials(student.fullName) || "ST";
+  }
+
+  if (accountPhoto) {
+    accountPhoto.alt = `${student.fullName} profile image`;
   }
 
   document.querySelectorAll("[data-nav]").forEach((link) => {

@@ -1,16 +1,18 @@
 const authMessage = document.getElementById("authMessage");
 const loginForm = document.getElementById("loginForm");
 const pageTitle = document.getElementById("pageTitle");
-const portalLabel = document.getElementById("portalLabel");
-const portalName = document.getElementById("portalName");
-const portalHeadline = document.getElementById("portalHeadline");
-const portalSubheadline = document.getElementById("portalSubheadline");
-const totalUsersCard = document.getElementById("totalUsersCard");
-const adminUsersCard = document.getElementById("adminUsersCard");
-const requestCountCard = document.getElementById("requestCountCard");
+const loginPortalName = document.getElementById("loginPortalName");
+const loginSubtitle = document.getElementById("loginSubtitle");
+const loginDatabase = document.getElementById("loginDatabase");
+const totalStudents = document.getElementById("totalStudents");
+const totalRequests = document.getElementById("totalRequests");
 const latestUsersList = document.getElementById("latestUsersList");
 
 function showMessage(message, tone = "error") {
+  if (!authMessage) {
+    return;
+  }
+
   authMessage.textContent = message;
   authMessage.dataset.tone = tone;
 }
@@ -34,6 +36,10 @@ async function request(url, options = {}) {
 }
 
 async function checkSession() {
+  if (!loginForm) {
+    return;
+  }
+
   try {
     await request("/api/auth/me");
     window.location.href = "/dashboard";
@@ -43,47 +49,74 @@ async function checkSession() {
 }
 
 async function loadLandingData() {
+  if (!loginForm) {
+    return;
+  }
+
   try {
     const payload = await request("/api/public/landing");
-    pageTitle.textContent = `${payload.portalName} Login`;
-    portalLabel.textContent = `${payload.portalName} ${payload.portalLabel}`;
-    portalName.textContent = payload.portalName;
-    portalHeadline.textContent = payload.headline;
-    portalSubheadline.textContent = payload.subheadline;
-    totalUsersCard.textContent = `${payload.stats.totalUsers} total users in MongoDB`;
-    adminUsersCard.textContent = `${payload.stats.totalAdmins} admins with CRUD access`;
-    requestCountCard.textContent = `${payload.stats.totalRequests} requests stored in MongoDB`;
 
-    latestUsersList.innerHTML = payload.latestUsers.length
-      ? payload.latestUsers
-          .map(
-            (user) => `
-              <p>${user.fullName} | ${user.regNo} | ${String(user.role).toUpperCase()}</p>
-            `
-          )
-          .join("")
-      : "<p>No users yet.</p>";
+    if (pageTitle) {
+      pageTitle.textContent = `${payload.portalName} Student Login`;
+    }
+
+    if (loginPortalName) {
+      loginPortalName.textContent = `${payload.portalName} Student Login`;
+    }
+
+    if (loginSubtitle) {
+      loginSubtitle.textContent = payload.subheadline;
+    }
+
+    if (loginDatabase) {
+      loginDatabase.textContent = payload.databaseName;
+    }
+
+    if (totalStudents) {
+      totalStudents.textContent = String(payload.stats.totalStudents);
+    }
+
+    if (totalRequests) {
+      totalRequests.textContent = String(payload.stats.totalRequests);
+    }
+
+    if (latestUsersList) {
+      latestUsersList.innerHTML = payload.latestUsers.length
+        ? payload.latestUsers
+            .map(
+              (user) => `
+                <li>
+                  <strong>${user.fullName}</strong>
+                  <span>${user.regNo} | ${String(user.role).toUpperCase()}</span>
+                </li>
+              `
+            )
+            .join("")
+        : "<li><strong>No users found</strong><span>Register a student to see records here.</span></li>";
+    }
   } catch (error) {
     return null;
   }
 }
 
-loginForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const formData = new FormData(loginForm);
-  const payload = Object.fromEntries(formData.entries());
+if (loginForm) {
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(loginForm);
+    const payload = Object.fromEntries(formData.entries());
 
-  try {
-    showMessage("Signing you in...", "success");
-    await request("/api/auth/login", {
-      method: "POST",
-      body: JSON.stringify(payload),
-    });
-    window.location.href = "/dashboard";
-  } catch (error) {
-    showMessage(error.message);
-  }
-});
+    try {
+      showMessage("Signing in...", "success");
+      await request("/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify(payload),
+      });
+      window.location.href = "/dashboard";
+    } catch (error) {
+      showMessage(error.message);
+    }
+  });
+}
 
 checkSession();
 loadLandingData();

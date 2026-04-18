@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="pageTitle">vtopx Student Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="role-login-page">
+    <header class="vtop-header">
+      <div class="vtop-header__bar vtop-container">
+        <a class="vtop-brand" href="/" aria-label="vtopx home">
+          <img src="/assets/vitap-logo.png" alt="VIT-AP University logo" />
+        </a>
+        <div class="vtop-header__copy">
+          <p class="vtop-header__tagline">VTOP translates to "VIT on TOP"</p>
+          <p class="vtop-header__subtitle">
+            Student access is connected to MongoDB-backed login credentials and live portal data.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="login-page-main vtop-container">
+      <section class="login-shell">
+        <article class="login-side-panel">
+          <p class="section-kicker section-kicker--blue">Student Portal</p>
+          <h1 id="loginPortalName">vtopx Student Login</h1>
+          <p id="loginSubtitle" class="login-copy">
+            Use your registration number or email with the password stored in the portal database.
+          </p>
+
+          <div class="login-stat-grid">
+            <div class="login-stat-card">
+              <span>Database</span>
+              <strong id="loginDatabase">vtopx</strong>
+            </div>
+            <div class="login-stat-card">
+              <span>Total Students</span>
+              <strong id="totalStudents">0</strong>
+            </div>
+            <div class="login-stat-card">
+              <span>Requests Logged</span>
+              <strong id="totalRequests">0</strong>
+            </div>
+          </div>
+
+          <div class="login-activity-panel">
+            <div class="info-panel__header">
+              <h3>Recent Portal Records</h3>
+            </div>
+            <ul id="latestUsersList" class="login-activity-list">
+              <li>
+                <strong>Loading records</strong>
+                <span>Fetching live entries from MongoDB.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="login-card login-card--student">
+          <a class="login-back-link" href="/">&larr; Back to portal home</a>
+          <p class="section-kicker section-kicker--blue">Sign In</p>
+          <h2>Student Login</h2>
+          <p class="muted-copy">
+            Login with your registration number or email. Successful login takes you directly to
+            the student dashboard.
+          </p>
+
+          <p id="authMessage" class="form-message" aria-live="polite"></p>
+
+          <form id="loginForm" class="stack-form" novalidate>
+            <label>
+              Registration Number or Email
+              <input
+                type="text"
+                name="identifier"
+                placeholder="23BCE20073 or lielstephen@gmail.com"
+                required
+              />
+            </label>
+
+            <label>
+              Password
+              <input type="password" name="password" placeholder="Enter your password" required />
+            </label>
+
+            <button type="submit" class="primary-button">Login</button>
+          </form>
+        </article>
+      </section>
+    </main>
+
+    <footer class="portal-footer">
+      <p>Copyright &copy; Software Development Cell, VIT-AP University</p>
+    </footer>
+
+    <script src="/auth.js"></script>
+  </body>
+</html>
